@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AddBeer from '../AddBeer/AddBeer'
 
 import './App.css';
 
@@ -56,6 +57,14 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AddBeer else shows LoginPage
+            exact
+            path="/addBeer"
+          >
+            <AddBeer />
           </ProtectedRoute>
 
           <ProtectedRoute
