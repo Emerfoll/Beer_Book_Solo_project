@@ -32,9 +32,9 @@ export default function BeerCard() {
         <Card className={classes.root} >
             <CardActionArea onClick={cardClicked}>
                 <CardMedia
-                    className={classes.media}
-                    image="public/images/Beer-Icon.png"
-                    title="beerCard"
+                className={classes.media}
+                image="public/images/Beer-Icon.png"
+                title="beerCard"
                     
                 />
                 <CardContent>

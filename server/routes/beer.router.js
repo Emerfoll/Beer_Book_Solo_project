@@ -7,6 +7,15 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
+  const queryText = `SELECT * FROM beers;`;
+
+  pool.query(queryText).then(result => {
+    res.send(result.rows);
+  }).catch(err => {
+    console.log('Error in get router', err);
+    res.sendStatus(500)
+  })
+
 });
 
 /**

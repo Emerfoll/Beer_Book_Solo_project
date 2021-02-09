@@ -10,19 +10,6 @@ import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.
 
 import App from './components/App/App';
 
-// function* rootSaga() {
-//   yield takeEvery('ADD_BEER', addBeerToList);
-// }
-
-function* addBeerToList(params) {
-  console.log('Adding beer');
-
-}
-
-
-
-
-
 
 
 
