@@ -19,7 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import AddBeer from '../AddBeer/AddBeer'
+import AddBeer from '../AddBeer/AddBeer';
+import NewBeer from '../NewBeer/NewBeer';
+
 
 import './App.css';
 
@@ -65,6 +67,14 @@ function App() {
             path="/addBeer"
           >
             <AddBeer />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows beerList else shows LoginPage
+            exact
+            path="/newBeer"
+          >
+            <NewBeer />
           </ProtectedRoute>
 
           <ProtectedRoute

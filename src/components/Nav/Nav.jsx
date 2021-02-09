@@ -32,6 +32,9 @@ function Nav() {
             <Link className="navLink" to="/addBeer">
               Add a Beer
             </Link>
+            <Link className="navLink" to="/newBeer">
+              Explore Beer list
+            </Link>
             <Link className="navLink" to="/info">
               Info Page
             </Link>
