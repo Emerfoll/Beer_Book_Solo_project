@@ -1,4 +1,5 @@
 import BeerCard from '../BeerCard/BeerCard';
+import SearchBar from '../SearchBar/SearchBar'
 
 
 function NewBeer(params) {
@@ -7,7 +8,7 @@ function NewBeer(params) {
         <>
         
         <h1>NewBeer</h1>
-
+        <SearchBar />
         <BeerCard />
 
         </>

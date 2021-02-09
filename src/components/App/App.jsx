@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBeer from '../AddBeer/AddBeer';
 import NewBeer from '../NewBeer/NewBeer';
+import MenuBar from '../MenuBar/MenuBar';
 
 
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <Router>
+      <MenuBar />
       <div>
         <Nav />
         <Switch>
@@ -128,6 +130,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
+      
     </Router>
   );
 }
