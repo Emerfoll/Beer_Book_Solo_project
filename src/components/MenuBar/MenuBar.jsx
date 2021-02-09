@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import SwipeableDrawer from '../SwipeableMenu/SwipeableMenu'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const handleMenuClick =() => {
+    
+}
+
 export default function SearchAppBar() {
   const classes = useStyles();
 
@@ -70,6 +75,7 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+            <SwipeableDrawer />
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -78,6 +84,8 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
+
+          
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>

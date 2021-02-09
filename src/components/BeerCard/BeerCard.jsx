@@ -22,7 +22,11 @@ const cardClicked = () => {
 }
 
 const cardButtonClick = () => {
-    console.log('card button clicked');
+    console.log('more info button clicked');
+}
+
+const addToListClick = () => {
+    console.log('add to list button clicked');
 }
 
 export default function BeerCard( { beerName, beerStyle } ) {
@@ -53,14 +57,14 @@ export default function BeerCard( { beerName, beerStyle } ) {
                 color="primary"
                 onClick={cardButtonClick}
                 >
-                    Share
+                    More Info
                 </Button>
                 <Button 
                 size="small" 
                 color="primary"
-                onClick={cardClicked}
+                onClick={addToListClick}
                 >
-                    Learn More
+                    Add to List
                 </Button>
             </CardActions>
         </Card>

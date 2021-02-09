@@ -1,0 +1,8 @@
+.beerCard {
+    display : flex;
+    flex-wrap: wrap;
+}
+
+.beerCardItem {
+    width: 350px;
+}
