@@ -25,8 +25,9 @@ const cardButtonClick = () => {
     console.log('card button clicked');
 }
 
-export default function BeerCard() {
+export default function BeerCard( { beerName, beerStyle } ) {
     const classes = useStyles();
+    
 
     return (
         <Card className={classes.root} >
@@ -39,10 +40,10 @@ export default function BeerCard() {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        BEER
+                        {beerName}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        STUFF ABOUT THE SPECIFIC BEER
+                        {beerStyle}
                     </Typography>
                 </CardContent>
             </CardActionArea>

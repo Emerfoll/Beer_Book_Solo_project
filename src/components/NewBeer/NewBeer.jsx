@@ -30,11 +30,11 @@ function NewBeer(params) {
         <SearchBar />
         <br />
 
-
-        <BeerCard />
-
         {beers.map((beer) => (
-            <li>{beer.beer_name}</li>
+            <BeerCard 
+            beerName={beer.beer_name}
+            beerStyle={beer.style}
+            />
         ))}
 
         </>
