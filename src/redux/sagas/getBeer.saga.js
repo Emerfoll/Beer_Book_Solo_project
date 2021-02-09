@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { put, takeLatest } from 'redux-saga/effects';
 
 
 
-function* getBeerList(params) {
+function* getBeer(params) {
     console.log('Beer run');
     // get all beers from the DB
     try {
@@ -15,4 +16,9 @@ function* getBeerList(params) {
   
   }
 
-export default getBeerList;
+function* beerRun() {
+    yield takeLatest('GET_BEER', getBeer);
+    
+  }
+
+export default beerRun;
