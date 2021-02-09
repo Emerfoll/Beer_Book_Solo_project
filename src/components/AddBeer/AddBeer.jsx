@@ -1,164 +1,75 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import './AddMovie.css'
-import {
-    Box,
-    Button,
-    Card,
-    CardActionArea,
-    CardActions,
-    CardContent,
-    IconButton,
-    Menu,
-    MenuItem,
-    Typography,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    TextField,
-} from '@material-ui/core'
 
 
-function AddMovie(params) {
+function AddBeer() {
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-
-    useEffect(() => {
-        dispatch({ type: 'GET_GENRES_LIST' });
-    }, []);
-
-    const genres = useSelector(store => store.genres);
-
-    const [movieTitle, setMovieTitle] = useState('');
-    const [moviePoster, setMoviePoster] = useState('');
-    const [movieDescription, setMovieDescription] = useState('');
-    const [movieGenre, setMovieGenre] = useState(0);
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [beerName, setBeerName] = useState('');
+    const [beerStyle, setBeerStyle] = useState('');
+    const [beerABV, setBeerABV] = useState('');
+    const [brewery, setBrewery] = useState('')
     
-
-    
-    const handleOpenMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = (event) => {
-        setAnchorEl(null);
-        setMovieGenre(event.target.value);
-        
-    };
-
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        if (movieTitle !== ''
-            && moviePoster !== ''
-            && movieDescription !== '') {
-            const movieToAdd = {
-                movieTitle,
-                moviePoster,
-                movieDescription,
-                movieGenre
+        event.preventDefault()
+        
+        if (beerName !== ''
+            && beerStyle !== ''
+            && beerABV !== ''
+            && brewery !== '') {
+            const beerToAdd = {
+                beerName,
+                beerStyle,
+                beerABV,
+                brewery
             }
-            dispatch({ type: 'ADD_MOVIE', payload: movieToAdd })
-            console.log('submitted', movieToAdd);
+            
+            console.log('submitted', beerToAdd);
         }
         else (alert('Please fill out all fields'));
-        setMovieTitle('');
-        setMoviePoster('');
-        setMovieDescription('');
-        history.push('/');
+        // setBeerName('');
+        // setBeerABV('');
+        // setBrewery('');
     }
 
-    const handleCancel = () => {
-        console.log('Movie not added');
-        history.push('/');
-    }
-
-
-
-    return (
+    return(
         <>
-            <h1>Add Movie</h1>
+        
+        <h1>Add Your Beer</h1>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <input 
+                type="text" 
+                placeholder="Beer Name"
+                value={beerName}
+                onChange={(event)=> setBeerName(event.target.value)}
+                />
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <TextField id="titleIn" label="Movie Title" variant="outlined"
+                <input 
+                type="text" 
+                placeholder="Style"
+                value={beerStyle}
+                onChange={(event)=> setBeerStyle(event.target.value)}
+                />
 
-                        type="text"
-                        value={movieTitle}
-                        onChange={(event) => setMovieTitle(event.target.value)} />
-                </div>
-                <br></br>
-                <div>
-                    <TextField width={600} id="posterIn" label="Movie Poster URL" variant="outlined"
-                        type="text"
-                        value={moviePoster}
-                        onChange={(event) => setMoviePoster(event.target.value)}
-                    />
-                </div>
-                <br></br>
-                <div>
-                    <TextField
-                        id="descriptionIn"
-                        label="Movie Description"
-                        multiline
-                        rows={10}
-                        variant="outlined"
-                        value={movieDescription}
-                        onChange={(event) => setMovieDescription(event.target.value)}
-                    />
-                    {/* <textarea
-                        name="description"
-                        id=""
-                        cols="30" rows="10"
-                        value={movieDescription}
-                        onChange={(event) => setMovieDescription(event.target.value)}
-                    ></textarea> */}
-                </div>
-                {/* <select
-                    name="genre"
-                    id="genre"
-                    value={movieGenre}
-                    onChange={(event) => setMovieGenre(event.target.value)}
-                >
-                    {genres.map((genre) => {
-                        return (<option value={genre.id} key={genre.id}>{genre.id}-{genre.name}</option>)
-                    })}
-                </select> */}
-                
-                <span>Genre:</span><Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpenMenu}>
-                {(movieGenre ? genres[movieGenre-1].name : 'Select' )}
-                </Button>
-                <Menu
-                    value={movieGenre}
-                    onChange={(event) => setMovieGenre(event.target.value)}
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-                    {genres.map((genre) => {
-                        return (<MenuItem
-                            onClick={handleClose}
-                            // onClick={(event) => setMovieGenre(event.target.value)}
-                            value={genre.id}
-                            key={genre.id}>{genre.name}</MenuItem>)
-                    })}
+                <input 
+                type="number" 
+                placeholder="ABV"
+                value={beerABV}
+                onChange={(event)=> setBeerABV(event.target.value)}
+                />
 
-                </Menu>
-                <div>
+                <input 
+                type="text" 
+                placeholder="Brewery"
+                value={brewery}
+                onChange={(event)=> setBrewery(event.target.value)}
+                />
 
-                    <button className="cancelBtn" onClick={handleCancel}>Cancel</button>
-                    <button className="submitBtn" onClick={handleSubmit}>Submit</button>
-                </div>
-            </form>
+            </div>
+            <button className="submitBtn" onClick={handleSubmit}>Submit</button>
 
+        </form>
+        
         </>
     )
 }
