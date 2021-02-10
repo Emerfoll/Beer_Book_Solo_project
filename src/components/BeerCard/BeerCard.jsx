@@ -17,9 +17,9 @@ const useStyles = makeStyles({
     },
 });
 
-const cardClicked = () => {
-    console.log('cardClicked');
-}
+// const cardClicked = () => {
+//     console.log('cardClicked');
+// }
 
 const cardButtonClick = () => {
     console.log('more info button clicked');
@@ -29,7 +29,7 @@ const addToListClick = () => {
     console.log('add to list button clicked');
 }
 
-export default function BeerCard( { beerName, beerStyle } ) {
+export default function BeerCard( { beerName, beerStyle, cardClicked } ) {
     const classes = useStyles();
     
 
@@ -55,7 +55,7 @@ export default function BeerCard( { beerName, beerStyle } ) {
                 <Button 
                 size="small"
                 color="primary"
-                onClick={cardButtonClick}
+                onClick={() => {cardButtonClick}}
                 >
                     More Info
                 </Button>
