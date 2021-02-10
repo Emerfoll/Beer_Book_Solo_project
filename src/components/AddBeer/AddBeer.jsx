@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function AddBeer() {
@@ -6,7 +7,9 @@ function AddBeer() {
     const [beerName, setBeerName] = useState('');
     const [beerStyle, setBeerStyle] = useState('');
     const [beerABV, setBeerABV] = useState('');
-    const [brewery, setBrewery] = useState('')
+    const [brewery, setBrewery] = useState('');
+
+    const dispatch = useDispatch();
     
 
     const handleSubmit = (event) => {
@@ -22,8 +25,8 @@ function AddBeer() {
                 beerABV,
                 brewery
             }
-            
             console.log('submitted', beerToAdd);
+            dispatch({ type: 'ADD_TO_MY_BEER', payload: beerToAdd})
         }
         else (alert('Please fill out all fields'));
         // setBeerName('');
