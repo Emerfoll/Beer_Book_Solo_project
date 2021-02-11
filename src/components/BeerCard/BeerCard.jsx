@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import SelectList from '../SelectList/SelectList';
 
 const useStyles = makeStyles({
     root: {
@@ -17,19 +18,18 @@ const useStyles = makeStyles({
     },
 });
 
-// const cardClicked = () => {
-//     console.log('cardClicked');
-// }
 
-const cardButtonClick = () => {
-    console.log('more info button clicked');
+const cardButtonClick = (event) => {
+    
+    console.log('more info button clicked', event);
 }
 
-const addToListClick = () => {
-    console.log('add to list button clicked');
+const addToList = (event) => {
+    console.log('add to list button clicked', event);
 }
 
-export default function BeerCard( { beerName, beerStyle, cardClicked } ) {
+export default function BeerCard( { beerName, beerStyle, cardClicked, beerId } ) {
+    
     const classes = useStyles();
     
 
@@ -55,17 +55,15 @@ export default function BeerCard( { beerName, beerStyle, cardClicked } ) {
                 <Button 
                 size="small"
                 color="primary"
-                onClick={() => {cardButtonClick}}
+                value={beerId}
+                onClick={() => {cardButtonClick(beerId)}}
                 >
                     More Info
                 </Button>
-                <Button 
-                size="small" 
-                color="primary"
-                onClick={addToListClick}
-                >
-                    Add to List
-                </Button>
+                
+                <SelectList 
+                addToList={addToList}
+                />
             </CardActions>
         </Card>
     );

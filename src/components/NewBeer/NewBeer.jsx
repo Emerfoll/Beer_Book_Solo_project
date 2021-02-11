@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-import './NewBeers.css'
+import './NewBeer.css'
 import Modal from '../Modal/Modal';
 
 
@@ -47,6 +47,7 @@ function NewBeer(params) {
                     <Grid item key={beer.id} className="beerCardItem" >
                     <BeerCard
                         key={beer.id}
+                        beerId={beer.id}
                         beerName={beer.beer_name}
                         beerStyle={beer.style}
                         cardClicked={cardClicked}
