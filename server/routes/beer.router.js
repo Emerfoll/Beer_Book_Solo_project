@@ -13,9 +13,19 @@ router.get('/', (req, res) => {
     console.log('Error in get router', err);
     res.sendStatus(500)
   })
-
 });
 
+router.get('/lists', (req, res) => {
+  // GET route code here
+  const queryText = `SELECT * FROM beer_lists;`;
+
+  pool.query(queryText).then(result => {
+    res.send(result.rows);
+  }).catch(err => {
+    console.log('Error in get router', err);
+    res.sendStatus(500)
+  })
+});
 
 
 router.post('/', (req, res) => {
