@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 
 router.get('/lists', (req, res) => {
   // GET route code here
-  const queryText = `SELECT * FROM beer_lists;`;
+  const queryText = `SELECT * FROM beer_lists
+                    JOIN "beers" ON "beers".id = "beer_lists".beer_id;`;
 
   pool.query(queryText).then(result => {
     res.send(result.rows);

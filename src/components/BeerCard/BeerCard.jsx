@@ -32,6 +32,7 @@ export default function BeerCard( { beerName, beerStyle, cardClicked, beerId } )
     
     const classes = useStyles();
     
+    // console.log(beerName);
 
     return (
         <Card className={classes.root} >

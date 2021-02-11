@@ -1,11 +1,11 @@
-import BeerCard from '../BeerCard/BeerCard';
-import SearchBar from '../SearchBar/SearchBar';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import './NewBeer.css'
 import Modal from '../Modal/Modal';
+import BeerCard from '../BeerCard/BeerCard';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 

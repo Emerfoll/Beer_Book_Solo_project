@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Grid } from '@material-ui/core';
+import Modal from '../Modal/Modal';
+import BeerCard from '../BeerCard/BeerCard';
 
 
 function UserPage() {
@@ -9,8 +11,8 @@ function UserPage() {
   const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
-  
-  
+
+
   const [listToDisplay, setListToDisplay] = useState('allLists');
   const beerLists = useSelector(store => store.beerLists)
 
@@ -23,8 +25,12 @@ function UserPage() {
   const displaySelectedList = (event) => {
     console.log('list selected');
     setListToDisplay(event)
-    
 
+
+  }
+
+  const cardClicked = () => {
+    console.log('cardclick');
   }
 
 
@@ -52,7 +58,20 @@ function UserPage() {
           <option value="would_drink_again">Would Drink Again</option>
           <option value="myBeers">My Beers</option>
         </select>
-        {(listToDisplay === 'allLists' ? <p>displaying all</p> : <p>displaying None</p>)}
+        {(listToDisplay === 'allLists' ?
+          <Grid container spacing={4} justify="center" className="beerCard">
+            {beerLists.map((beer) => (
+              <Grid item key={beer.id} className="beerCardItem" >
+                <BeerCard
+                  key={beer.id}
+                  beerId={beer.id}
+                  beerName={beer.beer_name}
+                  beerStyle={beer.style}
+                  cardClicked={cardClicked}
+                />
+              </Grid>
+            ))}
+          </Grid> : <p>Nothing to Display</p>)}
 
 
 
