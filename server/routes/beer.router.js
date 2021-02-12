@@ -33,24 +33,44 @@ router.post('/', (req, res) => {
   // POST route code here
   const beerToAdd = req.body
   console.log(beerToAdd);
-  
+
   const queryText = `INSERT INTO "my_beers" ("beer_name", "style", "abv", "brewery")
   VALUES ($1, $2, $3, $4)
   RETURNING "id";`;
 
-  pool.query(queryText, [beerToAdd.beer_name, 
-                        beerToAdd.style,
-                        beerToAdd.abv,
-                        beerToAdd.brewery
-                      ])
-  .then(result => {
-    console.log('New beer entry ID:', result.rows[0]);
-    
-  }).catch(err => {
-    console.log(err);
-    res.sendStatus(500)
-  })
+  pool.query(queryText, [beerToAdd.beer_name,
+  beerToAdd.style,
+  beerToAdd.abv,
+  beerToAdd.brewery
+  ])
+    .then(result => {
+      console.log('New beer entry ID:', result.rows[0]);
+
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500)
+    })
 
 });
+
+
+router.delete('/:id', (req, res) => {
+  console.log('Removing from list');
+  
+  try {
+    const sqlText = `
+    DELETE FROM "beer_lists" WHERE "beer_id" = $1;
+    `;
+
+    pool
+      .query(sqlText, [req.params.id])
+      .then(() => res.sendStatus(204))
+      
+
+  } catch (error) {
+    console.log(error);
+    
+  }
+})
 
 module.exports = router;

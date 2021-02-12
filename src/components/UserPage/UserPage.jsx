@@ -16,6 +16,7 @@ function UserPage() {
   const [listToDisplay, setListToDisplay] = useState('allLists');
   const beerLists = useSelector(store => store.beerLists)
 
+  const [displayToDOM, setDisplayToDOM] = useState([])
 
   useEffect(() => {
     dispatch({ type: 'GET_BEER_LISTS' });
@@ -24,9 +25,51 @@ function UserPage() {
 
   const displaySelectedList = (event) => {
     console.log('list selected');
-    setListToDisplay(event)
+    setListToDisplay(event);
+    whatToDisplay();
+
+  }
+
+  const whatToDisplay = () => {
+    let list = beerLists;
+
+    switch (listToDisplay) {
+      case 'favorites':
+        console.log('Displaying 3');
+        break;
+
+      case 'want_to_try':
+        setDisplayToDOM([])
+        list.map((beer) => {
+          if (beer.want_to_try == true) {
+            displayToDOM.push(beer)
+          }
+        })
+
+        console.log(displayToDOM);
+        break;
+
+      case 'did_not_like':
+        console.log('Displaying 2');
+        break;
+
+      case 'would_drink_again':
+        setDisplayToDOM([])
+        list.map((beer) => {
+          if (beer.would_drink_again == true) {
+            displayToDOM.push(beer)
+          }
+        })
+
+        console.log(displayToDOM);
+        break;
 
 
+      default: console.log('Displaying all');
+        break;
+
+
+    }
   }
 
   const cardClicked = () => {
@@ -58,6 +101,9 @@ function UserPage() {
           <option value="would_drink_again">Would Drink Again</option>
           <option value="myBeers">My Beers</option>
         </select>
+
+        <p>{JSON.stringify(displayToDOM)}</p>
+
         {(listToDisplay === 'allLists' ?
           <Grid container spacing={4} justify="center" className="beerCard">
             {beerLists.map((beer) => (
@@ -71,7 +117,21 @@ function UserPage() {
                 />
               </Grid>
             ))}
-          </Grid> : <p>Nothing to Display</p>)}
+          </Grid>
+          :
+          <Grid container spacing={4} justify="center" className="beerCard">
+            {displayToDOM.map((beer) => (
+              <Grid item key={beer.id} className="beerCardItem" >
+                <BeerCard
+                  key={beer.id}
+                  beerId={beer.id}
+                  beerName={beer.beer_name}
+                  beerStyle={beer.style}
+                  cardClicked={cardClicked}
+                />
+              </Grid>
+            ))}
+          </Grid>)}
 
 
 

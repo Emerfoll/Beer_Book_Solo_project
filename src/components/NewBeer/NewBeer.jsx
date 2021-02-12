@@ -20,7 +20,7 @@ function NewBeer(params) {
         dispatch({ type: 'GET_BEER' });
     }, []);
 
-    const cardClicked = () => {
+    const cardClicked = (event) => {
         console.log('cardClicked');
         setIsOpen(true)
     }
@@ -36,9 +36,10 @@ function NewBeer(params) {
             />
 
             <Modal 
-            open={isOpen} onClose={() => setIsOpen(false)}
+            open={isOpen} 
+            onClose={() => setIsOpen(false)}
             >
-                Super Fancy Modal
+                 Fancy Modal
             </Modal>
 
             <br />

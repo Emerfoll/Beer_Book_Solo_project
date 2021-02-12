@@ -8,7 +8,7 @@ function* getBeer(params) {
     // get all beers from the DB
     try {
         const beers = yield axios.get('/api/beer');
-        console.log('get all:', beers.data);
+        // console.log('get all:', beers.data);
         yield put({ type: 'SET_BEERS', payload: beers.data });
     } catch (err){
         console.log('get all error', err);

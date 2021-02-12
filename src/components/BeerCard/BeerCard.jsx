@@ -36,11 +36,12 @@ export default function BeerCard( { beerName, beerStyle, cardClicked, beerId } )
 
     return (
         <Card className={classes.root} >
-            <CardActionArea onClick={cardClicked}>
+            <CardActionArea onClick={(event) => {cardClicked(event.target.value)}}>
                 <CardMedia
                 className={classes.media}
                 image="public/images/Beer-Icon.png"
                 title="beerCard"
+                value={beerId}
                     
                 />
                 <CardContent>
@@ -64,6 +65,7 @@ export default function BeerCard( { beerName, beerStyle, cardClicked, beerId } )
                 
                 <SelectList 
                 addToList={addToList}
+                beerId={beerId}
                 />
             </CardActions>
         </Card>
