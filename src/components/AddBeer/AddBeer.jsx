@@ -12,12 +12,15 @@ function AddBeer() {
     const [beerABV, setBeerABV] = useState('');
     const [brewery, setBrewery] = useState('');
 
+    const myBeers = useSelector(store => store.beerLists)
+
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch({ type: 'GET_MY_BEER' });
-    // }, []);
+    useEffect(() => {
+        dispatch({ type: 'GET_MY_BEER_LISTS' });
+    }, []);
 
+    console.log('My beers:', myBeers);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -40,6 +43,19 @@ function AddBeer() {
         }
         else (alert('Please fill out all fields'));
 
+    }
+
+    const cardClicked = (event) => {
+        console.log('card clicked on newBeer page', event);
+        // setIsOpen(true)
+    }
+
+    const addToList = (event, beer) => {
+        console.log('List selected:', event, 'For', beer.beer_name);
+        // axios.put(`api/beer/${beerId}`, {
+        //                                 beerName: beer.beer_name,
+        //                                 event: event
+        //                             })
     }
 
     return (
@@ -88,6 +104,19 @@ function AddBeer() {
                 <button className="submitBtn" onClick={handleSubmit}>Submit</button>
 
             </form>
+
+            <Grid container spacing={4} justify="center" className="beerCard">
+                {myBeers.map((beer) => (
+                    <Grid item key={beer.id} className="beerCardItem" >
+                    <BeerCard
+                        key={beer.id}
+                        beer={beer}
+                        cardClicked={cardClicked}
+                        addToList={addToList}
+                    />
+                    </Grid>
+                ))}
+            </Grid>
 
         </>
     )

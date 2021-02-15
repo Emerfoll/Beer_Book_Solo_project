@@ -21,10 +21,17 @@ function NewBeer(params) {
     }, []);
 
     const cardClicked = (event) => {
-        console.log('cardClicked');
+        console.log('card clicked on newBeer page', event);
         setIsOpen(true)
     }
 
+    const addToList = (event, beer) => {
+        console.log('List selected:', event, 'For', beer.beer_name);
+        // axios.put(`api/beer/${beerId}`, {
+        //                                 beerName: beer.beer_name,
+        //                                 event: event
+        //                             })
+    }
 
 
     return (
@@ -35,23 +42,15 @@ function NewBeer(params) {
             beers={beers}
             />
 
-            <Modal 
-            open={isOpen} 
-            onClose={() => setIsOpen(false)}
-            >
-                 Fancy Modal
-            </Modal>
-
             <br />
             <Grid container spacing={4} justify="center" className="beerCard">
                 {beers.map((beer) => (
                     <Grid item key={beer.id} className="beerCardItem" >
                     <BeerCard
                         key={beer.id}
-                        beerId={beer.id}
-                        beerName={beer.beer_name}
-                        beerStyle={beer.style}
+                        beer={beer}
                         cardClicked={cardClicked}
+                        addToList={addToList}
                     />
                     </Grid>
                 ))}
@@ -62,3 +61,15 @@ function NewBeer(params) {
 
 
 export default NewBeer;
+
+
+
+
+
+
+ {/* <Modal 
+            open={isOpen} 
+            onClose={() => setIsOpen(false)}
+            >
+                 Fancy Modal
+            </Modal> */}
