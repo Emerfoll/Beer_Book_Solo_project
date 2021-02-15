@@ -30,11 +30,28 @@ router.get('/lists', (req, res) => {
   })
 });
 
+router.post('/listToDisplay', (req, res) => {
+  // GET route code here
+  console.log('beer router listToDisplay:', req.body.listName);
+  
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
+  JOIN "beers" ON "beers".id = "beer_lists".beer_id
+  JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list
+  WHERE "list_name" = '${req.body.listName}';
+  `;
+
+  pool.query(queryText).then(result => {
+    res.send(result.rows);
+  }).catch(err => {
+    console.log('Error in get router', err);
+    res.sendStatus(500)
+  })
+});
+
+
 router.get('/myList', (req, res) => {
   // GET route code here
-  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
-  JOIN "my_beers" ON "my_beers".id = "beer_lists".my_beer_id
-  JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list;
+  const queryText = `SELECT * FROM "my_beers";
   `;
 
   pool.query(queryText).then(result => {
@@ -97,7 +114,6 @@ router.put('/:id', (req, res) => {
 
   try {
 
-
     switch (cat) {
       case cat === 'wantToTry':
         list = 1
@@ -117,8 +133,6 @@ router.put('/:id', (req, res) => {
         return list;
 
     }
-
-
 
     console.log('sending query');
 

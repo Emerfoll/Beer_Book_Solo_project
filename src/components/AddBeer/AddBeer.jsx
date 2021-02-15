@@ -46,7 +46,7 @@ function AddBeer() {
     }
 
     const cardClicked = (event) => {
-        console.log('card clicked on newBeer page', event);
+        console.log('card clicked on addBeer page', event);
         // setIsOpen(true)
     }
 
@@ -108,12 +108,12 @@ function AddBeer() {
             <Grid container spacing={4} justify="center" className="beerCard">
                 {myBeers.map((beer) => (
                     <Grid item key={beer.id} className="beerCardItem" >
-                    <BeerCard
-                        key={beer.id}
-                        beer={beer}
-                        cardClicked={cardClicked}
-                        addToList={addToList}
-                    />
+                        <BeerCard
+                            key={beer.id}
+                            beer={beer}
+                            cardClicked={cardClicked}
+                            addToList={addToList}
+                        />
                     </Grid>
                 ))}
             </Grid>

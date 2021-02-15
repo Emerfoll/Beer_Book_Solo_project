@@ -32,12 +32,12 @@ export default function SelectListMenu({ beerId }) {
 
     return (
         <div>
-            
+
 
             <select
-            name="lists"
-            className="listSelector"
-            onChange={(event) => { addToList(event.target.value) }}
+                name="lists"
+                className="listSelector"
+                onChange={(event) => { addToList(event.target.value) }}
             >
                 <option value="selectList">Select List</option>
                 <option value="favorites">Favorites</option>
@@ -47,7 +47,7 @@ export default function SelectListMenu({ beerId }) {
                 <option value="removeFromList">Remove from List</option>
             </select>
 
-            
+
         </div>
     );
 }

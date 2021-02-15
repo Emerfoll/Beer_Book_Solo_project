@@ -11,15 +11,15 @@ function* getMyBeerLists(params) {
         const lists = yield axios.get('/api/beer/myList');
         console.log('get my beer list:', lists.data);
         yield put({ type: 'SET_MY_BEER_LISTS', payload: lists.data });
-    } catch (err){
+    } catch (err) {
         console.log('get lists error', err);
     }
-  
-  }
+
+}
 
 function* myBeerList() {
     yield takeLatest('GET_MY_BEER_LISTS', getMyBeerLists);
-    
-  }
+
+}
 
 export default myBeerList;

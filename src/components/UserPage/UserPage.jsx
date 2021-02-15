@@ -26,13 +26,16 @@ function UserPage() {
 
   const displaySelectedList = (event) => {
     console.log('list selected', event);
-    setListToDisplay(event);
-    dispatch({ type: 'WHAT_TO_DISPLAY', payload: event })
-
+    if (event === 'allLists') {
+      dispatch({ type: 'GET_BEER_LISTS' });
+    } else {
+      dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
+      setListToDisplay(event);
+    }
   }
 
   // const whatToDisplay = () => {
-  //   let list = beerLists;
+  //   
   //   console.log('what to display list:', list);
 
   // }
@@ -47,7 +50,7 @@ function UserPage() {
     //                                 beerName: beer.beer_name,
     //                                 event: event
     //                             })
-}
+  }
 
 
   console.log(beerLists);
@@ -70,15 +73,16 @@ function UserPage() {
           >
             <option value="allLists">View All</option>
             <option value="favorites">Favorites</option>
-            <option value="want_to_try">Want To Try</option>
-            <option value="did_not_like">Did Not Like</option>
-            <option value="would_drink_again">Would Drink Again</option>
-            <option value="myBeers">My Beers</option>
+            <option value="want to try">Want To Try</option>
+            <option value="did not like">Did Not Like</option>
+            <option value="would drink again">Would Drink Again</option>
+            <option value="my beers">My Beers</option>
           </select>
         </div>
-        {/* <p>{JSON.stringify(displayToDOM)}</p> */}
+
         <br />
         <br />
+
         <div>
           <Grid container spacing={4} justify="center" className="beerCard">
             {beerLists.map((beer) => (

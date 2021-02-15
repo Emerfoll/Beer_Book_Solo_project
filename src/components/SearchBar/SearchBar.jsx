@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SearchAppBar( beers ) {
+export default function SearchAppBar(beers) {
 
     const [searchFor, setSearchFor] = useState('')
 
@@ -87,22 +87,22 @@ export default function SearchAppBar( beers ) {
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'search' }}
-                            onChange={(event)=> {setSearchFor(event.target.value)}}
+                            onChange={(event) => { setSearchFor(event.target.value) }}
                         />
                         {beers.beers.filter((val) => {
-                            if(searchFor == '') {
+                            if (searchFor == '') {
                                 return null;
                             } else if (val.beer_name.toLowerCase().includes(searchFor.toLowerCase())) {
                                 return val;
                             }
                         }).map((val, key) => {
-                            return(
-                            <div>{val.beer_name}</div>
-                            // <BeerCard
-                            //     key={val.id}
-                            //     beerName={val.beer_name}
-                            //     beerStyle={val.style}
-                            // />
+                            return (
+                                <div>{val.beer_name}</div>
+                                // <BeerCard
+                                //     key={val.id}
+                                //     beerName={val.beer_name}
+                                //     beerStyle={val.style}
+                                // />
 
                             )
                         })}
