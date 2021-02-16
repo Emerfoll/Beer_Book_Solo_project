@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import './NewBeer.css'
@@ -27,11 +28,11 @@ function NewBeer(params) {
 
     const addToList = (event, beer) => {
         console.log('List selected:', event, 'For', beer.beer_name);
-        // axios.put(`api/beer/${beerId}`, {
+        // axios.put(`api/beer/${beer.id}`, {
         //                                 beerName: beer.beer_name,
         //                                 event: event
         //                             })
-    }
+      }
 
 
     return (

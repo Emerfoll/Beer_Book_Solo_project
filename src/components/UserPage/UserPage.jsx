@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
@@ -28,6 +29,8 @@ function UserPage() {
     console.log('list selected', event);
     if (event === 'allLists') {
       dispatch({ type: 'GET_BEER_LISTS' });
+    } else if (event === 'my beers') {
+      dispatch({ type: 'GET_MY_BEER_LISTS' });
     } else {
       dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
       setListToDisplay(event);
@@ -46,10 +49,10 @@ function UserPage() {
 
   const addToList = (event, beer) => {
     console.log('List selected:', event, 'For', beer.beer_name);
-    // axios.put(`api/beer/${beerId}`, {
-    //                                 beerName: beer.beer_name,
-    //                                 event: event
-    //                             })
+    axios.put(`api/beer/${beer.id}`, {
+                                    beerName: beer.beer_name,
+                                    event: event
+                                })
   }
 
 
@@ -93,6 +96,7 @@ function UserPage() {
                   cardClicked={cardClicked}
                   addToList={addToList}
                 />
+                
               </Grid>
             ))}
           </Grid>

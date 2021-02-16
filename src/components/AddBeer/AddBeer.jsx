@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
@@ -52,11 +53,11 @@ function AddBeer() {
 
     const addToList = (event, beer) => {
         console.log('List selected:', event, 'For', beer.beer_name);
-        // axios.put(`api/beer/${beerId}`, {
+        // axios.put(`api/beer/${beer.id}`, {
         //                                 beerName: beer.beer_name,
         //                                 event: event
         //                             })
-    }
+      }
 
     return (
         <>
@@ -95,9 +96,9 @@ function AddBeer() {
                     <select name="lists" className="listSelector">
                         <option value="listToAddTo">Select a List</option>
                         <option value="favorites">Favorites</option>
-                        <option value="want_to_try">Want To Try</option>
-                        <option value="did_not_like">Did Not Like</option>
-                        <option value="would_drink_again">Would Drink Again</option>
+                        <option value="want to try">Want To Try</option>
+                        <option value="did not like">Did Not Like</option>
+                        <option value="would drink again">Would Drink Again</option>
                     </select>
 
                 </div>
