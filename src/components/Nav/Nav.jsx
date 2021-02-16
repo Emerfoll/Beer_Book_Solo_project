@@ -20,11 +20,11 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">BEER BOOK</h2>
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
-          {loginLinkData.text}
+          {/* {loginLinkData.text} */} My Lists
         </Link>
 
         {user.id && (
@@ -33,11 +33,11 @@ function Nav() {
               Add a Beer
             </Link>
             <Link className="navLink" to="/newBeer">
-              Explore Beer list
+              Find a New Beer
             </Link>
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
             <LogOutButton className="navLink" />
           </>
         )}

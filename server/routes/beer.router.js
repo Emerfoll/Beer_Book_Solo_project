@@ -107,16 +107,14 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  console.log('req.body.event:', req.body.event);
   console.log('Body:', req.body, 'Params:', req.params.id);
 
-
   try {
-
     let cat = req.body.event;
     console.log('cat:', cat);
     let sqlText = '';
 
+    // if/else to set query text based on what list to display is sent
     if (cat === 'want to try') {
       sqlText = `UPDATE "beer_lists" SET "list" = 1
                   WHERE "beer_lists".id= $1

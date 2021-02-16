@@ -14,12 +14,13 @@ function UserPage() {
   const dispatch = useDispatch();
 
 
-  const [listToDisplay, setListToDisplay] = useState('allLists');
+  // Sets beetLists to the beers in the beerLists reducer
   const beerLists = useSelector(store => store.beerLists)
 
   console.log('userPage beerLists:', beerLists);
   // const [displayToDOM, setDisplayToDOM] = useState([])
 
+  // Sets the beerLists reducer to all the beers in all lists
   useEffect(() => {
     dispatch({ type: 'GET_BEER_LISTS' });
   }, []);
@@ -28,20 +29,17 @@ function UserPage() {
   const displaySelectedList = (event) => {
     console.log('list selected', event);
     if (event === 'allLists') {
+      // Sets the beerLists reducer to all the beers in all lists
       dispatch({ type: 'GET_BEER_LISTS' });
     } else if (event === 'my beers') {
+      // Sets the beerLists reducer to all the beers added by the user
       dispatch({ type: 'GET_MY_BEER_LISTS' });
     } else {
+      // Sets the beerLists reducer to all the beers in a specific lists
       dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
-      setListToDisplay(event);
+      
     }
   }
-
-  // const whatToDisplay = () => {
-  //   
-  //   console.log('what to display list:', list);
-
-  // }
 
   const cardClicked = (thing) => {
     console.log('card click on userPage', thing);
@@ -49,10 +47,12 @@ function UserPage() {
 
   const addToList = (event, beer) => {
     console.log('List selected:', event, 'For', beer.beer_name);
+    // axios put to move the beer to a different list
     axios.put(`api/beer/${beer.id}`, {
-                                    beerName: beer.beer_name,
-                                    event: event
-                                })
+      beerName: beer.beer_name,
+      // event from displaySelectedList in the select menu 
+      event: event
+    })
   }
 
 
@@ -61,12 +61,12 @@ function UserPage() {
 
   return (
     <>
-
       <div className="container">
         <h2>Welcome, {user.username}!</h2>
         <p>Your ID is: {user.id}</p>
         <LogOutButton className="btn" />
       </div>
+
       <div>
         <div>
           <select
@@ -87,6 +87,7 @@ function UserPage() {
         <br />
 
         <div>
+          {/* Map to display the selected view */}
           <Grid container spacing={4} justify="center" className="beerCard">
             {beerLists.map((beer) => (
               <Grid item key={beer.id} className="beerCardItem" >
@@ -96,15 +97,11 @@ function UserPage() {
                   cardClicked={cardClicked}
                   addToList={addToList}
                 />
-                
               </Grid>
             ))}
           </Grid>
-
         </div>
-
       </div>
-
     </>
   );
 }

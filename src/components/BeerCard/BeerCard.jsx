@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import SelectList from '../SelectList/SelectList';
+import Modal from '../Modal/Modal';
 import axios from 'axios';
 
 const useStyles = makeStyles({
@@ -28,7 +28,6 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
 
         console.log('more info button clicked', event);
     }
-
 
     const classes = useStyles();
 
@@ -77,7 +76,6 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                         <option value="would drink again">Would Drink Again</option>
                         <option value="remove from list">Remove from List</option>
                     </select>
-
 
                 </div>
             </CardActions>
