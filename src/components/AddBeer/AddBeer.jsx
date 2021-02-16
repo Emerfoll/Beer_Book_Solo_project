@@ -44,6 +44,7 @@ function AddBeer() {
         }
         else (alert('Please fill out all fields'));
 
+        dispatch({ type: 'GET_MY_BEER_LISTS' });
     }
 
     const cardClicked = (event) => {

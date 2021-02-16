@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -24,9 +24,17 @@ const useStyles = makeStyles({
 
 export default function BeerCard({ beer, cardClicked, addToList }) {
 
+    const [listBeerIsIn, setListBeerIsIn] = useState(beer.list_name);
+
     const cardButtonClick = (event) => {
 
         console.log('more info button clicked', event);
+    }
+
+    const listSelected = (event) => {
+        console.log('listSelected:', event);
+        addToList(event, beer)
+        setListBeerIsIn(event)
     }
 
     const classes = useStyles();
@@ -67,10 +75,11 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                     <select
                         name="lists"
                         className="listSelector"
-                        onChange={(event) => { addToList(event.target.value, beer) }}
+                        value={listBeerIsIn}
+                        onChange={(event) => { listSelected(event.target.value, beer) }}
                     >
-                        <option value="selectList">Select List</option>
                         <option value="favorites">Favorites</option>
+                        <option value="selectList">Select List</option>
                         <option value="want to try">Want To Try</option>
                         <option value="did not like">Did Not Like</option>
                         <option value="would drink again">Would Drink Again</option>

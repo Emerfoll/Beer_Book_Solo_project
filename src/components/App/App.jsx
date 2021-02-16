@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBeer from '../AddBeer/AddBeer';
 import NewBeer from '../NewBeer/NewBeer';
 import MenuBar from '../MenuBar/MenuBar';
+import BeerDetails from '../BeerCard/BeerDetails'
 
 
 import './App.css';
@@ -79,6 +80,14 @@ function App() {
             <NewBeer />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows BeerDetails else shows LoginPage
+            exact
+            path="/:id"
+          >
+            <BeerDetails />
+          </ProtectedRoute>
+          
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact

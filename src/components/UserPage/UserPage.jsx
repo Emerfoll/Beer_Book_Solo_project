@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
+import { useHistory, Link } from 'react-router-dom';
 
 
 function UserPage() {
@@ -12,6 +13,7 @@ function UserPage() {
   const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   // Sets beetLists to the beers in the beerLists reducer
@@ -43,9 +45,16 @@ function UserPage() {
 
   const cardClicked = (thing) => {
     console.log('card click on userPage', thing);
+
+    // history.push(`/${thing}`)
+    
+    
   }
 
   const addToList = (event, beer) => {
+    if ( event === 'remove from list') {
+      dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
+    }
     console.log('List selected:', event, 'For', beer.beer_name);
     // axios put to move the beer to a different list
     axios.put(`api/beer/${beer.id}`, {
@@ -75,8 +84,8 @@ function UserPage() {
             onChange={(event) => { displaySelectedList(event.target.value) }}
           >
             <option value="allLists">View All</option>
-            <option value="favorites">Favorites</option>
             <option value="want to try">Want To Try</option>
+            <option value="favorites">Favorites</option>
             <option value="did not like">Did Not Like</option>
             <option value="would drink again">Would Drink Again</option>
             <option value="my beers">My Beers</option>
