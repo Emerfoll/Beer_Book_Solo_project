@@ -7,6 +7,7 @@ import beerPost from './addToMyBeer.saga';
 import beerList from './beerList.saga';
 import myBeerList from './myBeerList.saga';
 import RemoveBeer from './RemoveFromLists';
+import userBeerDetails from './userBeerDetails.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     beerList(),
     myBeerList(),
     RemoveBeer(),
+    userBeerDetails(),
   ]);
 }

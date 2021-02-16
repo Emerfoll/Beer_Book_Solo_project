@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 function UserPage() {
@@ -43,11 +43,11 @@ function UserPage() {
     }
   }
 
-  const cardClicked = (thing) => {
-    console.log('card click on userPage', thing);
+  const cardClicked = (beer) => {
+    console.log('card click on userPage', beer);
 
-    // history.push(`/${thing}`)
-    
+    history.push(`/${beer.id}`)
+    dispatch({ type: 'USER_BEER_DETAILS', payload: { beer: beer.id } })
     
   }
 

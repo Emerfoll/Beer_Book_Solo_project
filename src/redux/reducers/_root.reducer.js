@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import beers from './beer.reducer';
 import beerLists from './beerList.reducer';
+import userBeer from './userBeer.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   beers, // contains all the beers from the beer list
   beerLists, // contains all the beers in the lists and what lists they are in.
+  userBeer,
 });
 
 export default rootReducer;

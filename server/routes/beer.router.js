@@ -62,6 +62,22 @@ router.get('/myList', (req, res) => {
   })
 });
 
+router.get('/userBeer/:id', (req, res) => {
+  console.log(req.params);
+  
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
+  JOIN "beers" ON "beers".id = "beer_lists".beer_id
+  JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list
+  WHERE "beer_lists".id = ${req.params.id};`
+
+  pool.query(queryText).then(result => {
+    res.send(result.rows)
+  }).catch(err => {
+    console.log('Error in get userBeer router', err);
+    res.sendStatus(500)
+  })
+})
+
 
 router.post('/', (req, res) => {
   // POST route code here

@@ -43,7 +43,7 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
 
     return (
         <Card className={classes.root} >
-            <CardActionArea onClick={() => { cardClicked(beer.id) }}>
+            <CardActionArea onClick={() => { cardClicked(beer) }}>
                 <CardMedia
                     className={classes.media}
                     image="public/images/Beer-Icon.png"
@@ -65,6 +65,7 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                     size="small"
                     color="primary"
                     value={beer.id}
+                    beer={beer}
                     onClick={() => { cardButtonClick(beer) }}
                 >
                     More Info
