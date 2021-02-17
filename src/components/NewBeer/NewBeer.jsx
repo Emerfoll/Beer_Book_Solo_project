@@ -38,7 +38,7 @@ function NewBeer(params) {
     return (
         <>
 
-            <h1>NewBeer</h1>
+            {/* <h1>NewBeer</h1> */}
             <SearchBar 
             beers={beers}
             />

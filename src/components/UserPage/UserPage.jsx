@@ -7,6 +7,8 @@ import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
 import { useHistory } from 'react-router-dom';
 
+import './UserPage.css'
+
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -74,17 +76,17 @@ function UserPage() {
 
   return (
     <>
-      <div className="container">
-        <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
-        <LogOutButton className="btn" />
+      <div className="container welcome">
+        <h2>Hi, {user.username}!</h2>
+        <p>Welcome to your personal list of BOI - (beers of interest)</p>
+        {/* <LogOutButton className="btn" /> */}
       </div>
 
       <div>
-        <div>
+        <div className="viewSelector">
           <select
             name="lists"
-            className="listSelector"
+            className="viewListSelector"
             onChange={(event) => { displaySelectedList(event.target.value) }}
           >
             <option value="allLists">View All</option>

@@ -1,4 +1,21 @@
-.listSelector {
+.viewListSelector {
     translate: (-50%, -50%);
-    
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+}
+
+.viewSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    text-align: center;
+}
+
+.welcome {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    padding: 10px;
 }

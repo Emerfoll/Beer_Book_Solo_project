@@ -19,7 +19,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
+      <Link to="/user">
         <h2 className="nav-title">BEER BOOK</h2>
       </Link>
       <div>

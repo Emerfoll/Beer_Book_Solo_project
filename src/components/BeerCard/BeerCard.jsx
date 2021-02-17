@@ -7,8 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import image from '../Beer-Icon/Beer-Icon.png'
 import Modal from '../Modal/Modal';
 import axios from 'axios';
+
+import './BeerCard.css'
 
 const useStyles = makeStyles({
     root: {
@@ -46,7 +49,7 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
             <CardActionArea onClick={() => { cardClicked(beer) }}>
                 <CardMedia
                     className={classes.media}
-                    image="public/images/Beer-Icon.png"
+                    image={image}
                     title="beerCard"
                     value={beer.id}
 
@@ -61,7 +64,7 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button
+                {/* <Button
                     size="small"
                     color="primary"
                     value={beer.id}
@@ -69,9 +72,9 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                     onClick={() => { cardButtonClick(beer) }}
                 >
                     More Info
-                </Button>
+                </Button> */}
 
-                <div>
+                <div className="listSelect">
 
                     <select
                         name="lists"

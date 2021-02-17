@@ -22,7 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBeer from '../AddBeer/AddBeer';
 import NewBeer from '../NewBeer/NewBeer';
 import MenuBar from '../MenuBar/MenuBar';
-import UserBeerDetails from '../BeerCard/UserBeerDetails'
+import UserBeerDetails from '../BeerDetails/UserBeerDetails'
 
 
 import './App.css';
@@ -41,7 +41,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/user" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route

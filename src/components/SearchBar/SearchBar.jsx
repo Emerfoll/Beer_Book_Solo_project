@@ -97,7 +97,7 @@ export default function SearchAppBar(beers) {
                             }
                         }).map((val, key) => {
                             return (
-                                <div>{val.beer_name}</div>
+                                <div key={key}>{val.beer_name}</div>
                                 // <BeerCard
                                 //     key={val.id}
                                 //     beerName={val.beer_name}

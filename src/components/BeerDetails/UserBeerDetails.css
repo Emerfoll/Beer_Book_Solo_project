@@ -1,0 +1,10 @@
+.details {
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgba(58, 17, 49, 0.454);
+    padding: 10px;
+  }
+
+.detailsContent{
+    text-align: center;
+}
