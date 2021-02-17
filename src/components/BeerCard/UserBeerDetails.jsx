@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 
+
 // Navigated to from the My Lists page
 const BeerDetails = (props) => {
 
@@ -31,6 +32,9 @@ const BeerDetails = (props) => {
         }).catch(err => {
             console.log(err);
         })
+
+        dispatch({ type: 'USER_BEER_DETAILS', payload: { beer: beerId } })
+        setUserNotes('')
     }
 
 
