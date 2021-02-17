@@ -61,6 +61,10 @@ function UserPage() {
       beerName: beer.beer_name,
       // event from displaySelectedList in the select menu 
       event: event
+    }).then(response => {
+      console.log(response);
+    }).catch(err => {
+      console.log(err);
     })
   }
 

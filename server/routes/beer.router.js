@@ -62,10 +62,12 @@ router.get('/myList', (req, res) => {
   })
 });
 
+// Grabs the beer the user clicks on in the My Lists page
 router.get('/userBeer/:id', (req, res) => {
   console.log(req.params);
-  
-  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
+
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "notes" 
+  FROM "beer_lists"
   JOIN "beers" ON "beers".id = "beer_lists".beer_id
   JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list
   WHERE "beer_lists".id = ${req.params.id};`
@@ -78,7 +80,27 @@ router.get('/userBeer/:id', (req, res) => {
   })
 })
 
+// Update the notes section on the user beer details.
+router.put('/userBeer/:id', (req, res) => {
+  console.log('Updating notes on userBeer');
+  console.log(req.body.userNotes, req.params.id);
 
+  let queryText = `UPDATE "beer_lists" SET "notes" = $2
+                  WHERE "beer_lists".id = $1
+                  RETURNING "beer_lists".id, "notes";`
+
+  pool.query(queryText, [req.params.id, req.body.userNotes]
+  ).then(results => {
+    res.sendStatus(204)
+  }).catch(err => {
+    console.log(err);
+
+  })
+})
+
+
+
+// post a new beer to the database in the my_beer table.
 router.post('/', (req, res) => {
   // POST route code here
   const beerToAdd = req.body
@@ -122,6 +144,7 @@ router.delete('/:id', (req, res) => {
   }
 })
 
+// put to update the list that the beer is on under the My List page.
 router.put('/:id', (req, res) => {
   console.log('Body:', req.body, 'Params:', req.params.id);
 

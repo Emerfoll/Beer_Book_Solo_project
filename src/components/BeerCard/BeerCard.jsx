@@ -79,9 +79,9 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                         value={listBeerIsIn}
                         onChange={(event) => { listSelected(event.target.value, beer) }}
                     >
-                        <option value="favorites">Favorites</option>
                         <option value="selectList">Select List</option>
                         <option value="want to try">Want To Try</option>
+                        <option value="favorites">Favorites</option>
                         <option value="did not like">Did Not Like</option>
                         <option value="would drink again">Would Drink Again</option>
                         <option value="remove from list">Remove from List</option>
