@@ -13,18 +13,29 @@ import SearchBar from '../SearchBar/SearchBar';
 function NewBeer(params) {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const beers = useSelector(store => store.beers);
 
+    console.log(beers);
     const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         dispatch({ type: 'GET_BEER' });
     }, []);
 
-    const cardClicked = (event) => {
-        console.log('card clicked on newBeer page', event);
+    const [modalContent, setModalContent] = useState('')
+
+    const cardClicked = (beer) => {
+        console.log('card clicked on newBeer page', beer);
         setIsOpen(true)
+
+        setModalContent(beer)
+
+        // history.push(`/beerDetails/${beer.id}`)
+        dispatch({ type: 'BEER_LIST_DETAILS', payload: { beer: beer.id } })
     }
+
 
     const addToList = (event, beer) => {
         console.log('List selected:', event, 'For', beer);
@@ -66,6 +77,17 @@ function NewBeer(params) {
                 beers={beers}
             />
 
+            <Modal
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+            >
+                <div>{modalContent.beer_name}</div>
+                <div>{modalContent.abv}</div>
+                <div>{modalContent.style}</div>
+                <div>{modalContent.brewery}</div>
+
+            </Modal>
+
             <br />
             <Grid container spacing={4} justify="center" className="beerCard">
                 {beers.map((beer) => (
@@ -91,9 +113,3 @@ export default NewBeer;
 
 
 
-{/* <Modal 
-            open={isOpen} 
-            onClose={() => setIsOpen(false)}
-            >
-                 Fancy Modal
-            </Modal> */}

@@ -11,7 +11,7 @@ import './UserPage.css'
 
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+ 
   const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function UserPage() {
     }
   }
 
-  const cardClicked = (beer) => {
+  const userCardClicked = (beer) => {
     console.log('card click on userPage', beer);
 
     history.push(`/${beer.id}`)
@@ -109,7 +109,7 @@ function UserPage() {
                 <BeerCard
                   key={beer.id}
                   beer={beer}
-                  cardClicked={cardClicked}
+                  cardClicked={userCardClicked}
                   addToList={addToList}
                 />
               </Grid>

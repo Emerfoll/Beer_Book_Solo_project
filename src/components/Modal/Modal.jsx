@@ -1,4 +1,8 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+
+import './Modal.css'
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -23,18 +27,25 @@ const OVERLAY_STYLE = {
 
 export default function Modal({ open, children, onClose }) {
 
+    const dispatch = useDispatch()
+
+    // dispatch({ type: 'BEER_LIST_DETAILS', payload: { beer: beerId } })
+    let beerDetails = useSelector(store => store.beerListDetails)
+
+    
     if (!open) return null
 
     return (
 
-        <>
+        <div className="modalDetails">
             <div style={OVERLAY_STYLE} />
             <div style={MODAL_STYLES}>
-                <button onClick={onClose}>close Modal</button>
+                
                 {children}
+                <button onClick={onClose}>close Modal</button>
 
             </div>
 
-        </>
+        </div>
     )
 }

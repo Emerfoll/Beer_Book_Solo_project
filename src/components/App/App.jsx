@@ -22,7 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddBeer from '../AddBeer/AddBeer';
 import NewBeer from '../NewBeer/NewBeer';
 import MenuBar from '../MenuBar/MenuBar';
-import UserBeerDetails from '../BeerDetails/UserBeerDetails'
+import UserBeerDetails from '../BeerDetails/UserBeerDetails';
+import BeerListDetails from '../BeerDetails/BeerListDetails';
 
 
 import './App.css';
@@ -86,6 +87,14 @@ function App() {
             path="/:id"
           >
             <UserBeerDetails />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows BeerDetails else shows LoginPage
+            exact
+            path="/beerDetails/:id"
+          >
+            <BeerListDetails />
           </ProtectedRoute>
           
           <ProtectedRoute

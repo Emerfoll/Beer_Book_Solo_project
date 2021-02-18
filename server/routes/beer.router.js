@@ -111,6 +111,23 @@ router.get('/userBeer/:id', (req, res) => {
   })
 })
 
+// Grabs the beer the user clicks on in the newBeer page
+router.get('/beerDetails/:id', (req, res) => {
+  console.log(req.params);
+
+  const queryText = `SELECT "beers".id, "beer_name", "brewery", "abv", "style" 
+  FROM "beers"
+  WHERE "beers".id = ${req.params.id};`
+
+  pool.query(queryText).then(result => {
+    res.send(result.rows)
+  }).catch(err => {
+    console.log('Error in get beerDetails router', err);
+    res.sendStatus(500)
+  })
+})
+
+
 // Update the notes section on the user beer details.
 router.put('/userBeer/:id', rejectUnauthenticated, (req, res) => {
   console.log('Updating notes on userBeer');
