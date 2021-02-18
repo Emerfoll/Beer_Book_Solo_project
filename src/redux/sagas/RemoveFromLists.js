@@ -7,7 +7,7 @@ function* removeFromLists(action) {
     console.log('Removing from lists');
     // Removes a beer from all lists in the DB
     try {
-        const beerToRemove = action.payload
+        const beerToRemove = action.payload.beer.id
 
         console.log('beerToRemove:', beerToRemove);
         
@@ -19,7 +19,7 @@ function* removeFromLists(action) {
         
     } catch (err) {
         console.log('Error Removing from lists', err);
-        
+    
     }
 }
 

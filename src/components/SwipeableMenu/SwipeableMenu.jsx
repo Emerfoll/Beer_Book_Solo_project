@@ -106,6 +106,7 @@ export default function SwipeableMenuDrawer() {
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{<MenuIcon />}</Button>
           <SwipeableDrawer
+            edge="start" // needed to make drawer swipeable
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}

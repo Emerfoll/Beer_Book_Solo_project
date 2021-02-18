@@ -1,8 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
+// GET request to get all beers from the beer list. (newBeer page)
 router.get('/', (req, res) => {
   // GET route code here
   const queryText = `SELECT * FROM beers;`;
@@ -15,6 +19,32 @@ router.get('/', (req, res) => {
   })
 });
 
+
+router.post('/addToList/:id', rejectUnauthenticated, (req, res) => {
+  // Get what to post out of the req/res
+  const beerToAdd = req.body.beer.id
+  const listToAddTo = req.body.event
+  const id = req.params.id
+  const userId = req.user.id
+  console.log(`User:${userId} - ${id}  beerToAdd: ${beerToAdd}, listToAddTo: ${listToAddTo}`);
+
+  const queryText = `INSERT INTO "beer_lists" ("user_id", "beer_id", "list")
+  VALUES ($1, $2, $3)
+  RETURNING "id";`;
+
+  pool.query(queryText, [userId, beerToAdd , listToAddTo])
+    .then(result => {
+      console.log('New beer entry ID:', result.rows[0]);
+
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500)
+    })
+  
+});
+
+
+// GET rout to get all beers to display on the userPage DOM. (from beerList.saga)
 router.get('/lists', (req, res) => {
   // GET route code here
   const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
@@ -30,6 +60,7 @@ router.get('/lists', (req, res) => {
   })
 });
 
+// post as a GET route to get what to display on the DOM. (from userPage)
 router.post('/listToDisplay', (req, res) => {
   // GET route code here
   console.log('beer router listToDisplay:', req.body.listName);
@@ -48,8 +79,8 @@ router.post('/listToDisplay', (req, res) => {
   })
 });
 
-
-router.get('/myList', (req, res) => {
+// Get route to display beers the user has added.
+router.get('/myList', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryText = `SELECT * FROM "my_beers";
   `;
@@ -81,7 +112,7 @@ router.get('/userBeer/:id', (req, res) => {
 })
 
 // Update the notes section on the user beer details.
-router.put('/userBeer/:id', (req, res) => {
+router.put('/userBeer/:id', rejectUnauthenticated, (req, res) => {
   console.log('Updating notes on userBeer');
   console.log(req.body.userNotes, req.params.id);
 
@@ -101,7 +132,7 @@ router.put('/userBeer/:id', (req, res) => {
 
 
 // post a new beer to the database in the my_beer table.
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
   const beerToAdd = req.body
   console.log(beerToAdd);
@@ -126,15 +157,15 @@ router.post('/', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
-  console.log('Removing from list');
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('Removing from list', req.params.id);
 
   try {
     const sqlText = `
-    DELETE FROM "beer_lists" WHERE "beer_id" = $1;
+    DELETE FROM "beer_lists" WHERE "id" = $1;
     `;
 
-    pool
+    pool 
       .query(sqlText, [req.params.id])
       .then(() => res.sendStatus(204))
 
@@ -145,7 +176,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // put to update the list that the beer is on under the My List page.
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('Body:', req.body, 'Params:', req.params.id);
 
   try {

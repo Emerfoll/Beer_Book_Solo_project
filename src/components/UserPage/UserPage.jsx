@@ -55,8 +55,8 @@ function UserPage() {
 
   const addToList = (event, beer) => {
     if ( event === 'remove from list') {
-      dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
-    }
+      dispatch({ type: 'REMOVE_FROM_LIST', payload: { beer } })
+    } else {
     console.log('List selected:', event, 'For', beer.beer_name);
     // axios put to move the beer to a different list
     axios.put(`api/beer/${beer.id}`, {
@@ -67,7 +67,7 @@ function UserPage() {
       console.log(response);
     }).catch(err => {
       console.log(err);
-    })
+    })}
   }
 
 
