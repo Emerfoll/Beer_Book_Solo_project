@@ -97,7 +97,7 @@ router.get('/myList', rejectUnauthenticated, (req, res) => {
 router.get('/userBeer/:id', (req, res) => {
   console.log(req.params);
 
-  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "notes" 
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "image", "notes" 
   FROM "beer_lists"
   JOIN "beers" ON "beers".id = "beer_lists".beer_id
   JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list

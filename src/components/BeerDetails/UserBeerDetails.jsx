@@ -44,6 +44,7 @@ const BeerDetails = (props) => {
         <div className="details">
             <div className="detailsContent">
                 <h1>Details for: {userBeer[0]?.beer_name}</h1>
+                <img src={userBeer[0]?.image} alt=""/>
                 <p>Brewery: {userBeer[0]?.brewery}</p>
                 <p>Style: {userBeer[0]?.style}</p>
                 <p>Alcohol content: {userBeer[0]?.abv}</p>
