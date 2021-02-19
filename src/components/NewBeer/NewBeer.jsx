@@ -124,11 +124,6 @@ function NewBeer(params) {
     return (
         <>
 
-            {/* <h1>NewBeer</h1> */}
-            {/* <SearchBar
-                beers={beers}
-            /> */}
-
             <AppBar position="static">
                 <Toolbar>
                     <div className={classes.searchContainer} >
@@ -148,7 +143,9 @@ function NewBeer(params) {
                 className="modalPopup"
                 open={isOpen}
                 onClose={() => setIsOpen(false)}
+                modalContent={modalContent}
             >
+                <img src={modalContent.image} />
                 <div>{modalContent.beer_name}</div>
                 <div>{modalContent.abv}</div>
                 <div>{modalContent.style}</div>

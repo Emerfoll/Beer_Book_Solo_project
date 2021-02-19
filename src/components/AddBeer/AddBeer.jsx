@@ -99,7 +99,7 @@ function AddBeer() {
                             onChange={(event) => setBrewery(event.target.value)}
                         />
                     </div>
-                    <div>
+                    {/* <div>
                         <select name="lists" className="viewListSelector">
                             <option value="listToAddTo">Select a List</option>
                             <option value="favorites">Favorites</option>
@@ -107,25 +107,25 @@ function AddBeer() {
                             <option value="did not like">Did Not Like</option>
                             <option value="would drink again">Would Drink Again</option>
                         </select>
-                        </div>
-                    </div>
-                    <br />
-                    <button className="submitBtn" onClick={handleSubmit}>Submit</button>
+                    </div> */}
+                </div>
+                <br />
+                <button className="submitBtn" onClick={handleSubmit}>Submit</button>
 
             </form>
-
-                <Grid container spacing={4} justify="center" className="beerCard">
-                    {myBeers.map((beer) => (
-                        <Grid item key={beer.id} className="beerCardItem" >
-                            <BeerCard
-                                key={beer.id}
-                                beer={beer}
-                                cardClicked={cardClicked}
-                                addToList={addToList}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
+            <br />
+            <Grid container spacing={4} justify="center" className="beerCard">
+                {myBeers.map((beer) => (
+                    <Grid item key={beer.id} className="beerCardItem" >
+                        <BeerCard
+                            key={beer.id}
+                            beer={beer}
+                            cardClicked={cardClicked}
+                            addToList={addToList}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
 
         </div>
     )

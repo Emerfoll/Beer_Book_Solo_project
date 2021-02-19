@@ -45,7 +45,8 @@ export default function Modal({ open, children, onClose }) {
             <div style={MODAL_STYLES}>
                 
                 {children}
-                <button onClick={onClose}>close Modal</button>
+                <br />
+                <button onClick={onClose}>Close</button>
 
             </div>
 

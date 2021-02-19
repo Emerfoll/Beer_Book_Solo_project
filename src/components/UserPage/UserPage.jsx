@@ -17,6 +17,8 @@ function UserPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [listSelected, setListSelected] = useState('allLists')
+
 
   // Sets beetLists to the beers in the beerLists reducer
   const beerLists = useSelector(store => store.beerLists)
@@ -43,6 +45,7 @@ function UserPage() {
       dispatch({ type: 'WHAT_TO_DISPLAY', payload: { listName: event } })
       
     }
+    setListSelected(event)
   }
 
   const userCardClicked = (beer) => {
@@ -87,6 +90,7 @@ function UserPage() {
           <select
             name="lists"
             className="viewListSelector"
+            value={listSelected}
             onChange={(event) => { displaySelectedList(event.target.value) }}
           >
             <option value="allLists">View All</option>

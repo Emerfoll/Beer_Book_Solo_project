@@ -9,7 +9,7 @@ const {
 // GET request to get all beers from the beer list. (newBeer page)
 router.get('/', (req, res) => {
   // GET route code here
-  const queryText = `SELECT * FROM beers;`;
+  const queryText = `SELECT * FROM beers ORDER BY "beer_name";`;
 
   pool.query(queryText).then(result => {
     res.send(result.rows);
@@ -47,7 +47,7 @@ router.post('/addToList/:id', rejectUnauthenticated, (req, res) => {
 // GET rout to get all beers to display on the userPage DOM. (from beerList.saga)
 router.get('/lists', (req, res) => {
   // GET route code here
-  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "image" FROM "beer_lists"
   JOIN "beers" ON "beers".id = "beer_lists".beer_id
   JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list;
   `;

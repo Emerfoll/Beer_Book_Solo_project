@@ -44,12 +44,15 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
 
     // console.log(beer);
 
+    
+
     return (
         <Card className={classes.root} >
             <CardActionArea onClick={() => { cardClicked(beer) }}>
+                {/* {beer.image ?  beer.image : image } */}
                 <CardMedia
                     className={classes.media}
-                    image={image}
+                    image={beer.image ?  beer.image : image }
                     title="beerCard"
                     value={beer.id}
 
