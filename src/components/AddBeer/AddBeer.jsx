@@ -58,69 +58,75 @@ function AddBeer() {
         //                                 beerName: beer.beer_name,
         //                                 event: event
         //                             })
-      }
+    }
 
     return (
-        <>
+        <div className="container welcome">
 
             <h1>Add Your Beer</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input
-                        type="text"
-                        placeholder="Beer Name"
-                        value={beerName}
-                        onChange={(event) => setBeerName(event.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Style"
-                        value={beerStyle}
-                        onChange={(event) => setBeerStyle(event.target.value)}
-                    />
-
-                    <input
-                        type="number"
-                        placeholder="ABV"
-                        value={beerABV}
-                        onChange={(event) => setBeerABV(event.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Brewery"
-                        value={brewery}
-                        onChange={(event) => setBrewery(event.target.value)}
-                    />
-
-                    <select name="lists" className="listSelector">
-                        <option value="listToAddTo">Select a List</option>
-                        <option value="favorites">Favorites</option>
-                        <option value="want to try">Want To Try</option>
-                        <option value="did not like">Did Not Like</option>
-                        <option value="would drink again">Would Drink Again</option>
-                    </select>
-
-                </div>
-                <button className="submitBtn" onClick={handleSubmit}>Submit</button>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Beer Name"
+                            value={beerName}
+                            onChange={(event) => setBeerName(event.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Style"
+                            value={beerStyle}
+                            onChange={(event) => setBeerStyle(event.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="ABV"
+                            value={beerABV}
+                            onChange={(event) => setBeerABV(event.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Brewery"
+                            value={brewery}
+                            onChange={(event) => setBrewery(event.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <select name="lists" className="viewListSelector">
+                            <option value="listToAddTo">Select a List</option>
+                            <option value="favorites">Favorites</option>
+                            <option value="want to try">Want To Try</option>
+                            <option value="did not like">Did Not Like</option>
+                            <option value="would drink again">Would Drink Again</option>
+                        </select>
+                        </div>
+                    </div>
+                    <br />
+                    <button className="submitBtn" onClick={handleSubmit}>Submit</button>
 
             </form>
 
-            <Grid container spacing={4} justify="center" className="beerCard">
-                {myBeers.map((beer) => (
-                    <Grid item key={beer.id} className="beerCardItem" >
-                        <BeerCard
-                            key={beer.id}
-                            beer={beer}
-                            cardClicked={cardClicked}
-                            addToList={addToList}
-                        />
-                    </Grid>
-                ))}
-            </Grid>
+                <Grid container spacing={4} justify="center" className="beerCard">
+                    {myBeers.map((beer) => (
+                        <Grid item key={beer.id} className="beerCardItem" >
+                            <BeerCard
+                                key={beer.id}
+                                beer={beer}
+                                cardClicked={cardClicked}
+                                addToList={addToList}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
 
-        </>
+        </div>
     )
 }
 

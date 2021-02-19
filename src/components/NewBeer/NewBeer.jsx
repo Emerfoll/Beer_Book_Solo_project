@@ -17,7 +17,7 @@ function NewBeer(params) {
 
     const beers = useSelector(store => store.beers);
 
-    console.log(beers);
+    // console.log(beers);
     const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
@@ -76,8 +76,10 @@ function NewBeer(params) {
             <SearchBar
                 beers={beers}
             />
-
+            
+            {/* displays the details info of the beer clicked. */}
             <Modal
+                className="modalPopup"
                 open={isOpen}
                 onClose={() => setIsOpen(false)}
             >

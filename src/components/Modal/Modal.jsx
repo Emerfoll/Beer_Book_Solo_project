@@ -9,6 +9,7 @@ const MODAL_STYLES = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    transition: '400ms ease-in',
     backgroundColor: '#FFF',
     padding: '50px',
     zIndex: 1000
@@ -21,7 +22,9 @@ const OVERLAY_STYLE = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, .7)',
-    zIndex: 1000
+    
+    zIndex: 1000,
+    
 
 }
 
