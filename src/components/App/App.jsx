@@ -37,7 +37,7 @@ function App() {
 
   return (
     <Router>
-      <MenuBar />
+      {/* <MenuBar /> */}
       <div>
         <Nav />
         <Switch>

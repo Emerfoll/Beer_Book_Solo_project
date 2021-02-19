@@ -38,9 +38,10 @@ function AddBeer() {
             }
             console.log('submitted', beerToAdd);
             dispatch({ type: 'ADD_TO_MY_BEER', payload: beerToAdd })
-            // setBeerName('');
-            // setBeerABV('');
-            // setBrewery('');
+            setBeerName('');
+            setBeerStyle('');
+            setBeerABV('');
+            setBrewery('');
         }
         else (alert('Please fill out all fields'));
 
