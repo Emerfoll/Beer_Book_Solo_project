@@ -115,7 +115,7 @@ router.get('/userBeer/:id', (req, res) => {
 router.get('/beerDetails/:id', (req, res) => {
   console.log(req.params);
 
-  const queryText = `SELECT "beers".id, "beer_name", "brewery", "abv", "style" 
+  const queryText = `SELECT "beers".id, "beer_name", "brewery", "abv", "style", "image" 
   FROM "beers"
   WHERE "beers".id = ${req.params.id};`
 

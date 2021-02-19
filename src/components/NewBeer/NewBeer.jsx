@@ -15,6 +15,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import AppBar from '@material-ui/core/AppBar';
 import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import background from '../Beer-Icon/singleBeerBackground.jpeg'
 
 
 // const theme = createMuiTheme({
@@ -118,11 +119,19 @@ function NewBeer(params) {
         })
     }
 
-
+    const backgroundStyle = {
+        maxWidth: "2000px",
+        height: "auto",
+        backgroundImage: `url(${background})`,
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+    }
 
 
     return (
-        <>
+        <div style={backgroundStyle}>
 
             <AppBar position="static">
                 <Toolbar>
@@ -155,21 +164,21 @@ function NewBeer(params) {
 
             <br />
             {beers ? (
-            <Grid container spacing={4} justify="center" className="beerCard">
-                {beers.map(
-                    (beer) => (
-                    beer.beer_name.toString().toLowerCase().includes(searchFor) &&
-                    <Grid item key={beer.id} className="beerCardItem" >
-                        <BeerCard
-                            key={beer.id}
-                            beer={beer}
-                            cardClicked={cardClicked}
-                            addToList={addToList}
-                        />
-                    </Grid>
-                ))}
-            </Grid>) : Searching }
-        </>
+                <Grid container spacing={4} justify="center" className="beerCard">
+                    {beers.map(
+                        (beer) => (
+                            beer.beer_name.toString().toLowerCase().includes(searchFor) &&
+                            <Grid item key={beer.id} className="beerCardItem" >
+                                <BeerCard
+                                    key={beer.id}
+                                    beer={beer}
+                                    cardClicked={cardClicked}
+                                    addToList={addToList}
+                                />
+                            </Grid>
+                        ))}
+                </Grid>) : Searching}
+        </div >
     )
 }
 
