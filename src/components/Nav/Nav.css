@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 0 30px;
+  margin: 0 0 0px;
   background-color: #3b0c0c;
   overflow: hidden;
 }
@@ -38,5 +38,5 @@
 }
 
 .navLink:hover {
-  background-color: #8f860e;
+  background-color: #b8ae26;
 }

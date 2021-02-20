@@ -15,7 +15,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import AppBar from '@material-ui/core/AppBar';
 import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import background from '../Beer-Icon/singleBeerBackground.jpeg'
+import background from '../Beer-Icon/singleBeerBackground.jpeg';
+import image from '../Beer-Icon/Beer-Icon.png';
+
 
 
 // const theme = createMuiTheme({
@@ -39,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     },
     searchContainer: {
         display: 'flex',
-        backgroundColor: fade(theme.palette.common.white, 0.15),
+        backgroundColor: fade(theme.palette.common.white, 0.35),
         paddingLeft: "20px",
         paddingRight: "20px",
         marginTop: "5px",
@@ -133,7 +135,7 @@ function NewBeer(params) {
     return (
         <div style={backgroundStyle}>
 
-            <AppBar position="static">
+            {/* <AppBar position="static"> */}
                 <Toolbar>
                     <div className={classes.searchContainer} >
                         <SearchIcon className={classes.searchIcon} />
@@ -145,7 +147,7 @@ function NewBeer(params) {
                         />
                     </div>
                 </Toolbar>
-            </AppBar>
+            {/* </AppBar> */}
 
             {/* displays the details info of the beer clicked. */}
             <Modal

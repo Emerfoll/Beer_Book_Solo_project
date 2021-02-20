@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
+import background from '../Beer-Icon/BeerWall.jpg'
 
 
 function AddBeer() {
@@ -61,45 +62,57 @@ function AddBeer() {
         //                             })
     }
 
-    return (
-        <div className="container welcome">
+    const backgroundStyle = {
+        maxWidth: "2000px",
+        height: "100vh",
+        backgroundImage: `url(${background})`,
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        
+    }
 
-            <h1>Add Your Beer</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
+    return (
+        <div style={backgroundStyle}>
+            <div className="container welcome" >
+
+                <h1>Add Your Beer</h1>
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <input
-                            type="text"
-                            placeholder="Beer Name"
-                            value={beerName}
-                            onChange={(event) => setBeerName(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Style"
-                            value={beerStyle}
-                            onChange={(event) => setBeerStyle(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="number"
-                            placeholder="ABV"
-                            value={beerABV}
-                            onChange={(event) => setBeerABV(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Brewery"
-                            value={brewery}
-                            onChange={(event) => setBrewery(event.target.value)}
-                        />
-                    </div>
-                    {/* <div>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Beer Name"
+                                value={beerName}
+                                onChange={(event) => setBeerName(event.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Style"
+                                value={beerStyle}
+                                onChange={(event) => setBeerStyle(event.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <input
+                                type="number"
+                                placeholder="ABV"
+                                value={beerABV}
+                                onChange={(event) => setBeerABV(event.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Brewery"
+                                value={brewery}
+                                onChange={(event) => setBrewery(event.target.value)}
+                            />
+                        </div>
+                        {/* <div>
                         <select name="lists" className="viewListSelector">
                             <option value="listToAddTo">Select a List</option>
                             <option value="favorites">Favorites</option>
@@ -108,25 +121,26 @@ function AddBeer() {
                             <option value="would drink again">Would Drink Again</option>
                         </select>
                     </div> */}
-                </div>
+                    </div>
+                    <br />
+                    <button className="submitBtn" onClick={handleSubmit}>Submit</button>
+
+                </form>
                 <br />
-                <button className="submitBtn" onClick={handleSubmit}>Submit</button>
+                <Grid container spacing={4} justify="center" className="beerCard">
+                    {myBeers.map((beer) => (
+                        <Grid item key={beer.id} className="beerCardItem" >
+                            <BeerCard
+                                key={beer.id}
+                                beer={beer}
+                                cardClicked={cardClicked}
+                                addToList={addToList}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
 
-            </form>
-            <br />
-            <Grid container spacing={4} justify="center" className="beerCard">
-                {myBeers.map((beer) => (
-                    <Grid item key={beer.id} className="beerCardItem" >
-                        <BeerCard
-                            key={beer.id}
-                            beer={beer}
-                            cardClicked={cardClicked}
-                            addToList={addToList}
-                        />
-                    </Grid>
-                ))}
-            </Grid>
-
+            </div>
         </div>
     )
 }

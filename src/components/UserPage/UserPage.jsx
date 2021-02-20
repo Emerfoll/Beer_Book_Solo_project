@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
 import { useHistory } from 'react-router-dom';
+import background from '../Beer-Icon/BeerBackground.jpg';
 
 import './UserPage.css'
 
@@ -73,13 +74,21 @@ function UserPage() {
     })}
   }
 
+  const backgroundStyle = {
+    maxWidth: "2000px",
+    height: "auto",
+    backgroundImage: `url(${background})`,
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+}
 
-  console.log(beerLists);
 
 
   return (
-    <>
-      <div className="container welcome">
+    <div style={backgroundStyle} >
+      <div className="container welcome" >
         <h2>Hi, {user.username}!</h2>
         <p>Welcome to your personal list of BOI - (beers of interest)</p>
         {/* <LogOutButton className="btn" /> */}
@@ -121,7 +130,7 @@ function UserPage() {
           </Grid>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
