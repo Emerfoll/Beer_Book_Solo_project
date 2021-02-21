@@ -14,7 +14,8 @@ function* addToMyBeer(action) {
             beer_name: action.payload.beerName,
             style: action.payload.beerStyle,
             abv: action.payload.beerABV,
-            brewery: action.payload.brewery
+            brewery: action.payload.brewery,
+            image: action.payload.image
         }
 
         const response = yield axios.post('/api/beer', beerToAdd);

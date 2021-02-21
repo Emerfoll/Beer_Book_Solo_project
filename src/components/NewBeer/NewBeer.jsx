@@ -123,7 +123,7 @@ function NewBeer(params) {
 
     const backgroundStyle = {
         maxWidth: "2000px",
-        height: "auto",
+        minHeight: "100vh",
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',
@@ -136,17 +136,17 @@ function NewBeer(params) {
         <div style={backgroundStyle}>
 
             {/* <AppBar position="static"> */}
-                <Toolbar>
-                    <div className={classes.searchContainer} >
-                        <SearchIcon className={classes.searchIcon} />
-                        <TextField
-                            onChange={handleSearchChange}
-                            className={classes.searchInput}
-                            label="Search Beer"
-                            variant="standard"
-                        />
-                    </div>
-                </Toolbar>
+            <Toolbar>
+                <div className={classes.searchContainer} >
+                    <SearchIcon className={classes.searchIcon} />
+                    <TextField
+                        onChange={handleSearchChange}
+                        className={classes.searchInput}
+                        label="Search Beer"
+                        variant="standard"
+                    />
+                </div>
+            </Toolbar>
             {/* </AppBar> */}
 
             {/* displays the details info of the beer clicked. */}
@@ -156,11 +156,11 @@ function NewBeer(params) {
                 onClose={() => setIsOpen(false)}
                 modalContent={modalContent}
             >
-                <img src={modalContent.image} />
-                <div>{modalContent.beer_name}</div>
-                <div>{modalContent.abv}</div>
-                <div>{modalContent.style}</div>
-                <div>{modalContent.brewery}</div>
+                <img src={modalContent.image} className="modalImg" />
+                <div><p>Name: {modalContent.beer_name}</p></div>
+                <div><p>ABV: {modalContent.abv}</p></div>
+                <div><p>Style: {modalContent.style}</p></div>
+                <div><p>Brewery: {modalContent.brewery}</p></div>
 
             </Modal>
 
@@ -180,6 +180,8 @@ function NewBeer(params) {
                             </Grid>
                         ))}
                 </Grid>) : Searching}
+            <br />
+            <br />
         </div >
     )
 }

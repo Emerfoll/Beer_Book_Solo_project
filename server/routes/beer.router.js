@@ -65,7 +65,7 @@ router.post('/listToDisplay', (req, res) => {
   // GET route code here
   console.log('beer router listToDisplay:', req.body.listName);
 
-  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style" FROM "beer_lists"
+  const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "image" FROM "beer_lists"
   JOIN "beers" ON "beers".id = "beer_lists".beer_id
   JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list
   WHERE "list_name" = '${req.body.listName}';
@@ -154,14 +154,15 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const beerToAdd = req.body
   console.log(beerToAdd);
 
-  const queryText = `INSERT INTO "my_beers" ("beer_name", "style", "abv", "brewery")
-  VALUES ($1, $2, $3, $4)
+  const queryText = `INSERT INTO "my_beers" ("beer_name", "style", "abv", "brewery", "image")
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING "id";`;
 
   pool.query(queryText, [beerToAdd.beer_name,
   beerToAdd.style,
   beerToAdd.abv,
-  beerToAdd.brewery
+  beerToAdd.brewery,
+  beerToAdd.image
   ])
     .then(result => {
       console.log('New beer entry ID:', result.rows[0]);

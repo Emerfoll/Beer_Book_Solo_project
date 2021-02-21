@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import background from '../Beer-Icon/singleBeerBackground.jpeg';
 
 import './UserBeerDetails.css';
 
@@ -38,10 +39,20 @@ const BeerDetails = (props) => {
         setUserNotes('')
     }
 
+    const backgroundStyle = {
+        maxWidth: "1800px",
+        height: "100vh",
+        backgroundImage: `url(${background})`,
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        
+    }
 
 
     return (
-        <div className="details">
+        <div className="details" style={backgroundStyle}>
             <div className="detailsContent">
                 <h1>Details for: {userBeer[0]?.beer_name}</h1>
                 <img src={userBeer[0]?.image} alt=""/>

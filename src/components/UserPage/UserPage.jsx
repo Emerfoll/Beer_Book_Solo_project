@@ -76,7 +76,7 @@ function UserPage() {
 
   const backgroundStyle = {
     maxWidth: "2000px",
-    height: "auto",
+    minHeight: "100vh",
     backgroundImage: `url(${background})`,
     backgroundAttachment: 'fixed',
     backgroundPosition: 'center',
@@ -129,6 +129,8 @@ function UserPage() {
             ))}
           </Grid>
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

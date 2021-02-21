@@ -13,6 +13,12 @@ function AddBeer() {
     const [beerStyle, setBeerStyle] = useState('');
     const [beerABV, setBeerABV] = useState('');
     const [brewery, setBrewery] = useState('');
+    const [image, setImage] = useState('');
+
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('');
+
 
     const myBeers = useSelector(store => store.beerLists)
 
@@ -35,23 +41,31 @@ function AddBeer() {
                 beerName,
                 beerStyle,
                 beerABV,
-                brewery
+                brewery,
+                image
             }
             console.log('submitted', beerToAdd);
+            // goes to addToMyBeer.saga.js
             dispatch({ type: 'ADD_TO_MY_BEER', payload: beerToAdd })
             setBeerName('');
             setBeerStyle('');
             setBeerABV('');
             setBrewery('');
+            setImage('')
         }
         else (alert('Please fill out all fields'));
 
         dispatch({ type: 'GET_MY_BEER_LISTS' });
     }
 
-    const cardClicked = (event) => {
-        console.log('card clicked on addBeer page', event);
-        // setIsOpen(true)
+    const cardClicked = (beer) => {
+        console.log('card clicked on newBeer page', beer);
+        setIsOpen(true)
+
+        setModalContent(beer)
+
+        // history.push(`/beerDetails/${beer.id}`)
+        dispatch({ type: 'BEER_LIST_DETAILS', payload: { beer: beer.id } })
     }
 
     const addToList = (event, beer) => {
@@ -64,13 +78,13 @@ function AddBeer() {
 
     const backgroundStyle = {
         maxWidth: "2000px",
-        height: "100vh",
+        minHeight: "100vh",
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        
+
     }
 
     return (
@@ -112,21 +126,37 @@ function AddBeer() {
                                 onChange={(event) => setBrewery(event.target.value)}
                             />
                         </div>
-                        {/* <div>
-                        <select name="lists" className="viewListSelector">
-                            <option value="listToAddTo">Select a List</option>
-                            <option value="favorites">Favorites</option>
-                            <option value="want to try">Want To Try</option>
-                            <option value="did not like">Did Not Like</option>
-                            <option value="would drink again">Would Drink Again</option>
-                        </select>
-                    </div> */}
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="image"
+                                value={image}
+                                onChange={(event) => setImage(event.target.value)}
+                            />
+
+                        </div>
                     </div>
                     <br />
                     <button className="submitBtn" onClick={handleSubmit}>Submit</button>
 
                 </form>
                 <br />
+            </div>
+            <Modal
+                className="modalPopup"
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                modalContent={modalContent}
+            >
+                <img src={modalContent.image} className="modalImg" />
+                <div><p>Name: {modalContent.beer_name}</p></div>
+                <div><p>ABV: {modalContent.abv}</p></div>
+                <div><p>Style: {modalContent.style}</p></div>
+                <div><p>Brewery: {modalContent.brewery}</p></div>
+
+            </Modal>
+
+            <div>
                 <Grid container spacing={4} justify="center" className="beerCard">
                     {myBeers.map((beer) => (
                         <Grid item key={beer.id} className="beerCardItem" >
