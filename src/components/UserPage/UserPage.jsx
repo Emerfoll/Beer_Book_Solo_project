@@ -89,7 +89,7 @@ function UserPage() {
   return (
     <div style={backgroundStyle} >
       <div className="container welcome" >
-        <h2>Hi, {user.username}!</h2>
+        <h2>GREETINGS {user.username.toString().toUpperCase()}!</h2>
         <p>Welcome to your personal list of BOI - (beers of interest)</p>
         {/* <LogOutButton className="btn" /> */}
       </div>
