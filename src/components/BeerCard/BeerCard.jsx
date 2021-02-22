@@ -49,7 +49,7 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
     return (
         <Card className={classes.root} >
             <CardActionArea onClick={() => { cardClicked(beer) }}>
-                {/* {beer.image ?  beer.image : image } */}
+                
                 <CardMedia
                     className={classes.media}
                     image={beer.image ?  beer.image : image }
@@ -57,27 +57,18 @@ export default function BeerCard({ beer, cardClicked, addToList }) {
                     value={beer.id}
 
                 />
-                <CardContent>
+                <CardContent className="cardContent">
                     <Typography gutterBottom variant="h5" component="h2">
                         {beer.beer_name}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2"  component="p">
                         {beer.style}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                {/* <Button
-                    size="small"
-                    color="primary"
-                    value={beer.id}
-                    beer={beer}
-                    onClick={() => { cardButtonClick(beer) }}
-                >
-                    More Info
-                </Button> */}
-
-                <div className="listSelect">
+            <CardActions className="listSelect">
+                
+                <div >
 
                     <select
                         name="lists"

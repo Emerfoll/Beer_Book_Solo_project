@@ -28,7 +28,7 @@ function AddBeer() {
         dispatch({ type: 'GET_MY_BEER_LISTS' });
     }, []);
 
-    console.log('My beers:', myBeers);
+    // console.log('My beers:', myBeers);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -47,13 +47,15 @@ function AddBeer() {
             console.log('submitted', beerToAdd);
             // goes to addToMyBeer.saga.js
             dispatch({ type: 'ADD_TO_MY_BEER', payload: beerToAdd })
-            setBeerName('');
-            setBeerStyle('');
-            setBeerABV('');
-            setBrewery('');
-            setImage('')
+            
         }
         else (alert('Please fill out all fields'));
+
+        setBeerName('');
+        setBeerStyle('');
+        setBeerABV('');
+        setBrewery('');
+        setImage('');
 
         dispatch({ type: 'GET_MY_BEER_LISTS' });
     }

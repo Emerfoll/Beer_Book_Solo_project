@@ -1,11 +1,23 @@
+.cardContent {
+    
+    color: gold;
+    background-color: rgb(75, 35, 92);
+}
+
+
+
 .listSelect {
+    color: gold;
+    background-color: rgb(75, 35, 92);
     margin: auto;
-    width: 50%;
+    width: 100%;
     padding: 10px;
 }
 
 .listSelector {
+    color: gold;
+    background-color: rgb(102, 46, 128);
     margin: auto;
-    width: 100%;
+    width: 200%;
     padding: 10px;
 }

@@ -10,3 +10,8 @@
 .modalImg {
     height: 400px;
 }
+
+.searchBar {
+    justify-content: center;
+    align-content: center;
+}

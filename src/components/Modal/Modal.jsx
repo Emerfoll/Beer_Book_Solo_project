@@ -22,10 +22,7 @@ const OVERLAY_STYLE = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, .7)',
-    
     zIndex: 1000,
-    
-
 }
 
 export default function Modal({ open, children, onClose }) {
@@ -46,7 +43,7 @@ export default function Modal({ open, children, onClose }) {
                 
                 {children}
                 <br />
-                <button onClick={onClose}>Close</button>
+                <button className="closeModalBtn" onClick={onClose}>Close</button>
 
             </div>
 

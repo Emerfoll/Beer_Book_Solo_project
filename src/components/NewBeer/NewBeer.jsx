@@ -20,13 +20,6 @@ import image from '../Beer-Icon/Beer-Icon.png';
 
 
 
-// const theme = createMuiTheme({
-//     palette: {
-//         primary: blue,
-//         secondary: pink,
-//       },
-//   });
-
 const useStyles = makeStyles(theme => ({
     beerContainer: {
         paddingTop: "20px",
@@ -41,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
     searchContainer: {
         display: 'flex',
-        backgroundColor: fade(theme.palette.common.white, 0.35),
+        backgroundColor: fade(theme.palette.common.white, 0.55),
         paddingLeft: "20px",
         paddingRight: "20px",
         marginTop: "5px",
@@ -52,7 +45,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: "5px",
     },
     searchInput: {
-        width: "200px",
+        width: "400px",
         margin: "5px",
     }
 }));
@@ -134,20 +127,22 @@ function NewBeer(params) {
 
     return (
         <div style={backgroundStyle}>
-
+            <br />
+            <br />
             {/* <AppBar position="static"> */}
-            <Toolbar>
+            <Toolbar className="searchBar">
                 <div className={classes.searchContainer} >
                     <SearchIcon className={classes.searchIcon} />
                     <TextField
                         onChange={handleSearchChange}
                         className={classes.searchInput}
-                        label="Search Beer"
+                        label="Search Beer List"
                         variant="standard"
                     />
                 </div>
             </Toolbar>
             {/* </AppBar> */}
+            <br />
 
             {/* displays the details info of the beer clicked. */}
             <Modal
