@@ -7,13 +7,21 @@
     text-align: center;
 }
 
+.loginLogo{ 
+    display: block;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 1.2%;
+    padding-bottom: 20px;
+}
 
 .loginBtn {
     display: block;
     margin: 0;
     position: relative;
     top: 50%;
-    left: 50%;
+    left: 51.5%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, 35%);
     color: gold;

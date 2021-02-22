@@ -80,7 +80,7 @@ function AddBeer() {
     }
 
     const backgroundStyle = {
-        maxWidth: "1800px",
+        maxWidth: "2100px",
         minHeight: "100vh",
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',

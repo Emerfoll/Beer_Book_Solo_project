@@ -31,7 +31,7 @@ function LoginForm() {
   return (
     <div className="loginDiv">
       <form className="formPanel" onSubmit={login}>
-        <h2>Login</h2>
+        <h2 className="loginLogo">Login</h2>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
             {errors.loginMessage}

@@ -75,7 +75,7 @@ function UserPage() {
   }
 
   const backgroundStyle = {
-    maxWidth: "2000px",
+    maxWidth: "2100px",
     minHeight: "100vh",
     backgroundImage: `url(${background})`,
     backgroundAttachment: 'fixed',

@@ -1,7 +1,7 @@
 .loginPage {
     /* background-image: url('../Beer-Icon/BeerBackground2.jpg'); */
     background-color: burlywood;
-    max-width: 2000px;
+    max-width: 2100px;
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
@@ -10,7 +10,7 @@
 }
 
 .loginForm {
-    transform: translate(0%, 5%);
+    transform: translate(0%, 10%);
     justify-content: center;
     align-content: center;
 }

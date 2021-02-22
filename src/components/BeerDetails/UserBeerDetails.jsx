@@ -55,7 +55,7 @@ const BeerDetails = (props) => {
         <div className="details" style={backgroundStyle}>
             <div className="detailsContent">
                 <h1>Details for: {userBeer[0]?.beer_name}</h1>
-                <img src={userBeer[0]?.image} alt=""/>
+                <img src={userBeer[0]?.image} alt="" className="userDetails"/>
                 <p>Brewery: {userBeer[0]?.brewery}</p>
                 <p>Style: {userBeer[0]?.style}</p>
                 <p>Alcohol content: {userBeer[0]?.abv}</p>
@@ -68,7 +68,7 @@ const BeerDetails = (props) => {
                     ></textarea>
 
                     <div>
-                        <button>Update notes</button>
+                        <button className="updateNote">Update notes</button>
                     </div>
                 </form>
             </div>
