@@ -45,11 +45,12 @@ router.post('/addToList/:id', rejectUnauthenticated, (req, res) => {
 
 
 // GET rout to get all beers to display on the userPage DOM. (from beerList.saga)
-router.get('/lists', (req, res) => {
+router.get('/lists', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryText = `SELECT "beer_lists".id, "beer_name", "list_name", "brewery", "abv", "style", "image" FROM "beer_lists"
   JOIN "beers" ON "beers".id = "beer_lists".beer_id
-  JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list;
+  JOIN "name_of_beer_lists" ON "name_of_beer_lists".id = "beer_lists".list
+  WHERE "beer_lists".user_id = ${userId};
   `;
 
   pool.query(queryText).then(result => {
