@@ -41,7 +41,7 @@ const BeerDetails = (props) => {
 
     const backgroundStyle = {
         maxWidth: "1800px",
-        height: "100vh",
+        minHeight: "100vh",
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',

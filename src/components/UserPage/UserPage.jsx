@@ -6,7 +6,7 @@ import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
 import { useHistory } from 'react-router-dom';
-import background from '../Beer-Icon/BeerBackground.jpg';
+import background from '../Beer-Icon/singleBeerBackground.jpeg';
 
 import './UserPage.css'
 
