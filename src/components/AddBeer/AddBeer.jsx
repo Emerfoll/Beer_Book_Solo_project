@@ -4,8 +4,9 @@ import axios from 'axios';
 import { Grid } from '@material-ui/core';
 import Modal from '../Modal/Modal';
 import BeerCard from '../BeerCard/BeerCard';
-import background from '../Beer-Icon/BeerWall.jpg'
+import background from '../Beer-Icon/singleBeerBackground.jpeg';
 
+import './AddBeer.css'
 
 function AddBeer() {
 
@@ -47,7 +48,7 @@ function AddBeer() {
             console.log('submitted', beerToAdd);
             // goes to addToMyBeer.saga.js
             dispatch({ type: 'ADD_TO_MY_BEER', payload: beerToAdd })
-            
+
         }
         else (alert('Please fill out all fields'));
 
@@ -79,7 +80,7 @@ function AddBeer() {
     }
 
     const backgroundStyle = {
-        maxWidth: "2000px",
+        maxWidth: "1800px",
         minHeight: "100vh",
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',
@@ -93,11 +94,12 @@ function AddBeer() {
         <div style={backgroundStyle}>
             <div className="container welcome" >
 
-                <h1>Add Your Beer</h1>
-                <form onSubmit={handleSubmit}>
+                <h1 >Add Your Beer</h1>
+                <form onSubmit={handleSubmit} >
                     <div>
                         <div>
                             <input
+                                className="addForm"
                                 type="text"
                                 placeholder="Beer Name"
                                 value={beerName}
@@ -106,6 +108,7 @@ function AddBeer() {
                         </div>
                         <div>
                             <input
+                                className="addForm"
                                 type="text"
                                 placeholder="Style"
                                 value={beerStyle}
@@ -114,6 +117,7 @@ function AddBeer() {
                         </div>
                         <div>
                             <input
+                                className="addForm"
                                 type="number"
                                 placeholder="ABV"
                                 value={beerABV}
@@ -122,6 +126,7 @@ function AddBeer() {
                         </div>
                         <div>
                             <input
+                                className="addForm"
                                 type="text"
                                 placeholder="Brewery"
                                 value={brewery}
@@ -130,6 +135,7 @@ function AddBeer() {
                         </div>
                         <div>
                             <input
+                                className="addForm"
                                 type="text"
                                 placeholder="image"
                                 value={image}
@@ -144,6 +150,8 @@ function AddBeer() {
                 </form>
                 <br />
             </div>
+
+
             <Modal
                 className="modalPopup"
                 open={isOpen}
