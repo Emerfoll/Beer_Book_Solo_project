@@ -31,7 +31,8 @@ I can also use Beer Book to track new beers I would like to try, that way I can 
 
 ## Built With
 
-Node.js, Express, React.js, SQL, and Material-UI, passport, .
+React.js, Node.js, Express.js, PostgreSQL, Redux, Redux-Saga, Passport.js and Material-UI.
+Deployed with Heroku
 
 ## Acknowledgement
 Thanks to my instructors at [Prime Digital Academy](www.primeacademy.io) who guided me on my jurney to make this application a reality.
