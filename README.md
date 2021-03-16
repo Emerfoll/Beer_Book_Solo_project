@@ -11,7 +11,7 @@ Beer Book is a web application designed with the beer drinker in mind. I develop
 
 I can also use Beer Book to track new beers I would like to try, that way I can pull up my list for some insperation instead of standing in the beer isle for 20+ min trying to decide what to try.
 
-![Alt text](Beer_Book_Solo_project/documentation/images/Screen Shot 2021-03-16 at 6.29.11 PM.png "Find a New Beer Page")
+![Find a New Beer Page](https://github.com/Emerfoll/Beer_Book_Solo_project/documentation/images/Screen Shot 2021-03-16 at 6.29.11 PM.png "Find a New Beer Page")
 
 ## Usage
 
